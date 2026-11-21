@@ -1,4 +1,4 @@
-name = "ig-comment-dm"
+name = "khisomov-ig-comment-dm"
 main = "src/index.ts"
 compatibility_date = "2026-08-14"
 # Do not enable nodejs_compat. Web Crypto (crypto.subtle) only.
@@ -11,16 +11,14 @@ compatibility_date = "2026-08-14"
 # config with comments in it. If you add the id by hand, do not commit it.
 [[d1_databases]]
 binding = "DB"
-database_name = "ig-comment-dm"
+database_name = "khisomov-ig-comment-dm"
 # `wrangler d1 migrations apply` runs each file here once, in filename order, and
 # records it in the d1_migrations table. The integration tests read this too.
 migrations_dir = "migrations"
 
-# The daily job (token refresh, totals), and the minute job, which sends the
-# queue and polls for missed comments every fifth minute. Two of the free
-# plan's five cron triggers per account.
+# Scheduled sending is disabled for the one-comment pilot.
 [triggers]
-crons = ["0 3 * * *", "* * * * *"]
+crons = []
 
 [vars]
 # Meta Unified login (Meta apps created since late Oct 2026) is switched on by
